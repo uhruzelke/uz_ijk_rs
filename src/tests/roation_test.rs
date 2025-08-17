@@ -1,7 +1,7 @@
 use crate::quaternions::Quaterion;
 use glam::{self, vec3, Mat3, Vec3};
 
-
+const PI = 3.14159;
 
 #[test]
 fn rotate_quaterion() {
@@ -20,4 +20,14 @@ fn rotate_matrix() {
     let r = m*v;
     let exp_r = vec3(1.0,0.0,0.0);
     assert_eq!(r,exp_r);
+}
+
+
+
+
+fn apply_tyny_roation_q(v:Quaterion<f32>,x:f32,y:f32,z:f32)-> Quaterion<f32>{
+    let q = Quaterion::formEE(z, y, z); 
+    let conugate = q.conjugate();
+    let r = q*v*conugate;
+    return r;
 }
