@@ -15,6 +15,30 @@ impl <T> Quaterion<T>{
     }
 }
 
+impl Quaterion<f32> {
+    pub fn formEE(x:f32,y:f32,z:f32)-> Quaterion<f32>{
+        let r = x*0.5;
+        let p = y*0.5;
+        let y = z*0.5;
+        let cr = r.cos();
+        let sr = r.sin();
+        let cp = p.cos();
+        let sp = p.sin();
+        let cy = y.cos();
+        let sy = y.sin();
+
+        let mut q = Quaterion::new(0.0,0.0,0.0,0.0);
+        q.real =  cr * cp * cy + sr * sp * sy;
+        q.i_part = sr * cp * cy - cr * sp * sy;
+        q.j_part = cr * sp * cy + sr * cp * sy;
+        q.k_part = cr * cp * sy - sr * sp * cy;
+
+        return q;
+
+    }
+    
+}
+
 impl <T: Neg<Output = T>> Quaterion<T> 
 {
     pub fn conjugate(self)-> Self{
