@@ -50,6 +50,13 @@ fn sub_complex_f32() {
     let result_expected = Complex::new(2.05, 8.0);
     assert_eq!(result, result_expected);
 }    
-
+#[test]
+fn quaterion_test_f32(){
+    let one = Quaterion::new(0.99,0.00, 0.00, 0.00);
+    let tow= Quaterion::new(0.199,0.000, 0.000, 0.000);
+    let r = one*tow;
+    let exprt_r = Quaterion::new(0.19701, 0.0, 0.0, 0.0);
+    assert_eq!(r,exprt_r);
+}
 
 
